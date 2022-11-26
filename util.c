@@ -53,7 +53,8 @@ static void scanInput(char *data)
      * The GTK box use \0 for end string.
      * Then we can use strlen()
      */
-    int i, c = 0, opt, temp = 0, ret = 0;
+    int i, c = 0, opt, temp = 0;
+    float ret = 0;
     //int *number;
     int number[2] = {0};
     int len = strlen(data);
@@ -83,7 +84,7 @@ static void scanInput(char *data)
         number[c] = temp;
     }
 
-    switch (ret)
+    switch ((int)ret)
     {
     case 1:
         ret = number[0] + number[1];
@@ -92,7 +93,7 @@ static void scanInput(char *data)
         ret = number[0] - number[1];
         break;
     case 3:
-        ret = number[0] / number[1];
+        ret = (float)number[0] / number[1];
         break;
     case 4:
         ret = number[0] * number[1];
@@ -101,7 +102,7 @@ static void scanInput(char *data)
         break;
     }
 
-    g_print("\nIl risultato dell'operazione è: %d", ret);
+    g_print("\nIl risultato dell'operazione è: %f", ret);
 
     showResult(ret);
 }

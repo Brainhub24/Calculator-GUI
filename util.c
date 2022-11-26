@@ -39,7 +39,7 @@ static int operationRet(char buff)
  * Update GUI interface
  */
 static void showResult(float input) {
-    int len = (int)log10((int)input) + 1;
+    int len = (int)log10((int)input < 0 ? -input : input) + 1;
     char *output;
     len = len + 5;
     output = (char *)calloc(len, sizeof(char));
